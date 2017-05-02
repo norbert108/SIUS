@@ -1,13 +1,15 @@
 from urllib.parse import urlencode
-import tornado.httpclient
-import tornado.ioloop
+import http.client
 
 url = 'https://localhost:8888'
-post_fields = {
+headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+
+query_req_body = urlencode({
     'latitude': 28.30,
-    'longitude': 45.38
-}
-request_body = urlencode(post_fields).encode()
+    'longitude': 45.38,
+    'radius': 15.3
+})
+connect_req_body = urlencode({'name': 'testuser'})
 
 
 def handle_response(response):
@@ -16,6 +18,12 @@ def handle_response(response):
     else:
         print(response.body)
 
-http_client = tornado.httpclient.AsyncHTTPClient()
-http_client.fetch("http://localhost:8888/query", handle_response, method='POST', body=request_body)
-tornado.ioloop.IOLoop.instance().start()
+conn = http.client.HTTPConnection('localhost', 8888)
+conn.request('POST', '/connect', body=connect_req_body, headers=headers)
+resp = conn.getresponse()
+print(resp.read())
+
+conn.request('POST', '/query', body=query_req_body, headers=headers)
+resp = conn.getresponse()
+print(resp.read())
+
