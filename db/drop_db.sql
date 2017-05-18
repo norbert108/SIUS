@@ -1,0 +1,1 @@
+DROP DATABASE sius_2017;
