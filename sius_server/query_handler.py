@@ -11,4 +11,9 @@ class QueryHandler(BaseHandler):
         latitude = self.get_argument('latitude')
         longitude = self.get_argument('longitude')
         radius = self.get_argument('radius')
-        self.write(Database.query(latitude, longitude, radius))
+        db_result = Database.query(latitude, longitude, radius)
+        result = {
+            'status': 1,
+            'result': db_result
+        }
+        self.write(result)

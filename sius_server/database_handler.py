@@ -28,7 +28,7 @@ class Database:
     @classmethod
     def modify_positions(cls):
         for user in cls._users_tmp:
-            switch_x = (randint(10) - 5) / 1000.0
-            user['longitude'] = user['longitude'] + switch_x
-            switch_y = (randint(10) - 5) / 1000.0
-            user['latitude'] = user['latitude'] + switch_y
+            switch_x = (randint(0, 10) - 5) / 10000.0
+            user['longitude'] = round(user['longitude'] + switch_x, 4)
+            switch_y = (randint(0, 10) - 5) / 10000.0
+            user['latitude'] = round(user['latitude'] + switch_y, 4)
