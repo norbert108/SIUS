@@ -1,15 +1,21 @@
+import psycopg2
 from psycopg2 import connect
 from ast import literal_eval
 
 
 class DBAdapter:
 
-    def __init__(self, db_name, user):
-        self.db_name = db_name
+    def __init__(self, dbname, user, password, host, port):
+        self.dbname = dbname
         self.user = user
+        self.password = password
+        self.host = host
+        self.port = port
 
     def __open_connection(self):
-        self.conn = connect('dbname=%s user=%s' % (self.db_name, self.user))
+        # self.conn = connect('dbname=%s user=%s' % (self.db_name, self.user))
+        self.conn = psycopg2.connect(dbname=self.dbname, user=self.user,
+                                     password=self.password, host=self.host, port=self.port)
         self.cur = self.conn.cursor()
         return self.cur
 

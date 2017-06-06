@@ -3,6 +3,8 @@ import os
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 
+import urllib.parse as urlparse
+
 from sius_server.DBAdapter import DBAdapter
 
 app = Flask(__name__)
@@ -17,7 +19,15 @@ parser.add_argument('id', type=int)
 parser.add_argument('lat', type=float)
 parser.add_argument('long', type=float)
 
-db_adapter = DBAdapter('sius_2017', 'postgres')
+
+url = urlparse.urlparse(os.environ['DATABASE_URL'])
+dbname = url.path[1:]
+user = url.username
+password = url.password
+host = url.hostname
+port = url.port
+
+db_adapter = DBAdapter(dbname, user, password, host, port)
 
 
 class CoordinatorRunner(Resource):
