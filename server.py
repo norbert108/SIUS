@@ -15,6 +15,7 @@ application = Application([
 Database.initialize()
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8888))
     http_server = HTTPServer(application)
-    http_server.listen(8888)
+    http_server.listen(port)
     IOLoop.instance().start()
