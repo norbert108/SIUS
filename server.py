@@ -13,12 +13,10 @@ api = Api(app)
 objects = dict()
 taken_ids = set()
 
-
 parser = reqparse.RequestParser()
 parser.add_argument('id', type=int)
 parser.add_argument('lat', type=float)
 parser.add_argument('long', type=float)
-
 
 url = urlparse.urlparse(os.environ['DATABASE_URL'])
 dbname = url.path[1:]

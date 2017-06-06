@@ -1,6 +1,6 @@
-import psycopg2
-from psycopg2 import connect
 from ast import literal_eval
+
+import psycopg2
 
 
 class DBAdapter:
