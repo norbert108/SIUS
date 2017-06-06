@@ -7,6 +7,8 @@ from sius_server.database_handler import Database
 from sius_server.login_handler import LoginHandler
 from sius_server.query_handler import QueryHandler
 
+import os
+
 
 application = Application([
     (r"/query", QueryHandler),
