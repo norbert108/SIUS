@@ -46,7 +46,7 @@ class DBAdapter:
         for record in result:
             coord = literal_eval(record[0])
             id, lat, long = coord
-            result_set[id] = [lat, long]
+            result_set[str(id)] = [str(lat), str(long)]
         self.__close_connection()
         return result_set
 

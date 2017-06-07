@@ -32,7 +32,7 @@ class Simulate:
         if self.user_data.get(uid) is None:
             random_coords = Simulate.get_random_coords()
         else:
-            random_coords = Simulate.get_random_coords_diff(self.user_data.get(uid)[0], self.user_data.get(uid)[0])
+            random_coords = Simulate.get_random_coords_diff(self.user_data.get(uid)[0], self.user_data.get(uid)[1])
 
         Simulate.do_update(uid, random_coords[0], random_coords[1])
         self.user_data[uid] = random_coords

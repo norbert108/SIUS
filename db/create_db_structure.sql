@@ -68,7 +68,7 @@ DECLARE
   l_status integer;
   l_radius DOUBLE PRECISION;
 BEGIN
-  l_radius := 10000.0;
+  l_radius := 50000.0;
   l_pos_id := -1;
   -- Get existing position by object ID
   SELECT core.position_get_by_obj_id(
