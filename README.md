@@ -1,6 +1,11 @@
 # README
 
-## Database
+# Public endpoints
+
+https://sius.herokuapp.com/initialise  (GET)  
+https://sius.herokuapp.com/coords      (GET - int id)  
+https://sius.herokuapp.com/update  (PUT - int id, double lat, double long)
+# Database
 
 ### Preparation
 
